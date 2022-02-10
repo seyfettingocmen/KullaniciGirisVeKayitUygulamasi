@@ -61,7 +61,7 @@ class KayitEkrani : AppCompatActivity() {
             }
 
             // "bilgiler" isimli sharedPreferences klasörüde daha önce kayıtlı verilerle, girilen verilerin eşit olması durumunda yapılacak işlemler;
-            else if (ad1 == kayitliAd || parolaa == kayitliParola){
+            else if (ad1 == kayitliAd && parolaa == kayitliParola){
                 uyari.setTitle("Kayıt Hatası")
                 uyari.setMessage("Zaten Böyle Bir Hesap Mevcut")
                 uyari.setPositiveButton("GİRİŞ YAP",DialogInterface.OnClickListener { dialogInterface, i ->
@@ -71,6 +71,7 @@ class KayitEkrani : AppCompatActivity() {
                 uyari.setNeutralButton("TAMAM",DialogInterface.OnClickListener { dialogInterface, i ->  })
                 uyari.show()
             }
+
             // yazılan tüm kriterlere takılmadığı takdirde yapılacak işlemler;
             else{
                 // "bilgiler" isimli kayıt alanına anahtar kelimelere sahip veri kaydetmek için;
@@ -92,6 +93,11 @@ class KayitEkrani : AppCompatActivity() {
         binding.giris2.setOnClickListener {
             val intent = Intent(applicationContext,MainActivity::class.java)
             startActivity(intent)
+        }
+        // cıkış butonuna basınca yapılacak işlemler;
+        binding.cikis2.setOnClickListener {
+            finish()
+            Toast.makeText(this@KayitEkrani,"Çıkış Yapıldı",Toast.LENGTH_SHORT).show()
         }
 
 
