@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity() {
 
             // hiçbir şart koşulu uymayınca yapılacaklar;
             else {
-
                 // kullaniciAd kısmına yazılan text'leri silmek için;
                 binding.kullaniciAd.text.clear()
                 binding.parola.text.clear()
@@ -99,7 +98,6 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(applicationContext,KayitEkrani::class.java)
             startActivity(intent)
         }
-
 
     }
 
