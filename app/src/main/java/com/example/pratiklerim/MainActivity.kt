@@ -30,10 +30,8 @@ class MainActivity : AppCompatActivity() {
         // sharedPreferences kayıt işlemi için anahtar kelime ve modunu kilitli mod olarak belirleme;
         sharedPreferences = getSharedPreferences("bilgiler", MODE_PRIVATE)
 
-
         // giriş butonuna dokununca yapılacak işlemler
         binding.giris1.setOnClickListener {
-
 
             // kullanici girdisine değer verme;
             val girilenAd = binding.kullaniciAd.text.toString()
@@ -46,33 +44,29 @@ class MainActivity : AppCompatActivity() {
 
 
             // kullanıcı ve parola editText'leri boştayken butona basılırsa yapılacaklar;
-            if (girilenAd == "" || gelenParola == "" ){
+            if (girilenAd == "" || girilenParola == "" ){
 
-            // Uyarı ekranı oluşturma için;
-            val uyari = AlertDialog.Builder(this@MainActivity)
-            uyari.setTitle("Giriş Hatası")
-            uyari.setMessage("Lütfen Gerekli Verileri Giriniz!!")
-            uyari.setPositiveButton("TAMAM",DialogInterface.OnClickListener { dialogInterface, i ->  })
-            uyari.show()
-
+                // Uyarı ekranı oluşturma için;
+                val uyari = AlertDialog.Builder(this@MainActivity)
+                uyari.setTitle("Giriş Hatası")
+                uyari.setMessage("Lütfen Gerekli Verileri Giriniz!!")
+                uyari.setPositiveButton("TAMAM",DialogInterface.OnClickListener { dialogInterface, i ->  })
+                uyari.show()
              }
-
             // kullanıcı girdisi veriler ile kayıtlı verilerin eşleşmemesi durumunda yapılacaklar;
             else if (girilenAd != gelenAd || girilenParola != gelenParola){
 
-            // uyari ekranı oluşturmak için;
-            val uyari = AlertDialog.Builder(this@MainActivity)
-            uyari.setTitle("Giriş Hatası")
-            uyari.setMessage("Lütfen Doğru Verileri Giriniz!!")
-            uyari.setPositiveButton("TAMAM",DialogInterface.OnClickListener { dialogInterface, i ->  })
-            uyari.setNeutralButton("KAYIT OL",DialogInterface.OnClickListener { dialogInterface, i ->
-                val intent = Intent(applicationContext,KayitEkrani::class.java)
-                startActivity(intent)
-            })
-            uyari.show()
-
+                // uyari ekranı oluşturmak için;
+                val uyari = AlertDialog.Builder(this@MainActivity)
+                uyari.setTitle("Giriş Hatası")
+                uyari.setMessage("Lütfen Doğru Verileri Giriniz!!")
+                uyari.setPositiveButton("TAMAM",DialogInterface.OnClickListener { dialogInterface, i ->  })
+                uyari.setNeutralButton("KAYIT OL",DialogInterface.OnClickListener { dialogInterface, i ->
+                    val intent = Intent(applicationContext,KayitEkrani::class.java)
+                    startActivity(intent)
+                })
+                uyari.show()
             }
-
             // hiçbir şart koşulu uymayınca yapılacaklar;
             else {
                 // kullaniciAd kısmına yazılan text'leri silmek için;

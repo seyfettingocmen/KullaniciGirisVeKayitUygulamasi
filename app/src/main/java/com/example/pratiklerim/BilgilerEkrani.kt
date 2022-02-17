@@ -1,9 +1,11 @@
 package com.example.pratiklerim
 
+import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.pratiklerim.databinding.ActivityBilgilerEkraniBinding
 import com.example.pratiklerim.databinding.ActivityMainBinding
 
@@ -17,7 +19,7 @@ class BilgilerEkrani : AppCompatActivity() {
     // runnable isimli sayac fonksiyonunu bir değere eşitlemek için;
     var runnable: Runnable = Runnable {  }
 
-    // handler isimli sayac yardımcısı fonksiyonunu bir değere eşitlemek için;
+    // handler isimli sayac yardımcısını bir değere eşitlemek için;
     var handler = Handler(Looper.myLooper()!!)
 
     // numara isimli değere int 0 değişkene eşitlemek için;
@@ -46,19 +48,24 @@ class BilgilerEkrani : AppCompatActivity() {
 
         // sharedPreferences klasör içindeki verileri anahtar kelimelerine göre silme;
         binding.kayitSil.setOnClickListener {
-            sharedPreferences.edit().remove("ad").apply()
-            sharedPreferences.edit().remove("parola").apply()
-            finish()
-            Toast.makeText(this@BilgilerEkrani,"Kayıt Silindi",Toast.LENGTH_SHORT).show()
-        }
 
+            val uyari = AlertDialog.Builder(this@BilgilerEkrani)
+            uyari.setTitle("KAYDINIZI SİLMEK İSTİYOR MUSUNUZ?")
+            uyari.setPositiveButton("HAYIR",DialogInterface.OnClickListener { dialogInterface, i ->  })
+            uyari.setNegativeButton("EVET",DialogInterface.OnClickListener { dialogInterface, i ->
+                sharedPreferences.edit().remove("ad").apply()
+                sharedPreferences.edit().remove("parola").apply()
+                finish()
+                Toast.makeText(this@BilgilerEkrani,"Kayıt Silindi",Toast.LENGTH_SHORT).show()
+            })
+            uyari.show()
+        }
 
         // çıkış butonuna basınca yapılacak işlemleri oluşturma;
         binding.cikis3.setOnClickListener {
             finish()
             Toast.makeText(this@BilgilerEkrani,"ÇIKIŞ YAPILDI",Toast.LENGTH_SHORT).show()
         }
-
 
         // KRONEMETRE
 
@@ -72,12 +79,10 @@ class BilgilerEkrani : AppCompatActivity() {
 
                 handler.postDelayed(runnable,1)
             }
-
         }
         handler.post(runnable)
-
-
         }
+
         // Kronemetreyi Durdurmak İçin
 
         binding.durdur.setOnClickListener {
@@ -88,20 +93,18 @@ class BilgilerEkrani : AppCompatActivity() {
         binding.sayac1.text = "${numara}"
 
         }
-
-
         // Sayacı Başlatmak İçin
+
         binding.baslat2.setOnClickListener {
 
             object : CountDownTimer(3000,1000){
-                override fun onTick(sayac: Long) {
-                    binding.geriSayi.text = "${sayac/1000}"
+                override fun onTick(p0: Long) {
+                    binding.geriSayi.text = "${p0/1000}"
                 }
 
                 override fun onFinish() {
                     binding.geriSayi.text = "0"
                     Toast.makeText(this@BilgilerEkrani,"Geri Sayım Bitti",Toast.LENGTH_SHORT).show()
-
                 }
 
             }.start()

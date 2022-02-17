@@ -61,7 +61,7 @@
         android:id="@+id/kayit2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="67dp"
         android:text="kayıt"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,43 +72,41 @@
         android:id="@+id/giris2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="108dp"
         android:text="Giriş"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/kayit2"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kayit2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
         android:layout_marginEnd="21dp"
         android:text="Yada;"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/giris2"
         app:layout_constraintEnd_toStartOf="@+id/giris2"
-        app:layout_constraintHorizontal_bias="0.924"
+        app:layout_constraintHorizontal_bias="0.881"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kayit2" />
+        app:layout_constraintTop_toTopOf="@+id/giris2"
+        app:layout_constraintVertical_bias="0.428" />
 
 
     <Button
         android:id="@+id/cikis2"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="221dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="#FF0000"
         android:text="çıkış"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/giris2" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView10"
