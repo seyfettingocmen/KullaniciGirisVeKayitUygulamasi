@@ -81,14 +81,13 @@ class BilgilerEkrani : AppCompatActivity() {
             }
         }
         handler.post(runnable)
+
         }
 
         // Kronemetreyi Durdurmak İçin
 
         binding.durdur.setOnClickListener {
         handler.removeCallbacks(runnable)
-
-
 
         }
         // Kronemetreyi Sıfırlamak İçin
