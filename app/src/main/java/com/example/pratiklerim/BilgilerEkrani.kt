@@ -86,22 +86,29 @@ class BilgilerEkrani : AppCompatActivity() {
         // Kronemetreyi Durdurmak İçin
 
         binding.durdur.setOnClickListener {
-
         handler.removeCallbacks(runnable)
 
-        numara = 0
-        binding.sayac1.text = "${numara}"
+
 
         }
+        // Kronemetreyi Sıfırlamak İçin
+        binding.sifirla.setOnClickListener {
+            handler.removeCallbacks(runnable)
+
+            numara = 0
+            binding.sayac1.text = "${numara}"
+        }
+
         // Sayacı Başlatmak İçin
 
         binding.baslat2.setOnClickListener {
 
             object : CountDownTimer(3000,1000){
+                // Her saniye yapılacak eylemi kodlamak için;
                 override fun onTick(p0: Long) {
                     binding.geriSayi.text = "${p0/1000}"
                 }
-
+                // Süre bitince yapıcak eylemi kodlamak için;
                 override fun onFinish() {
                     binding.geriSayi.text = "0"
                     Toast.makeText(this@BilgilerEkrani,"Geri Sayım Bitti",Toast.LENGTH_SHORT).show()
